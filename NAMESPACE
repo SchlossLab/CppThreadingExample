@@ -1,0 +1,11 @@
+useDynLib(ThreadingExample, .registration=TRUE)
+
+# c++ code
+import(RcppThread)
+importFrom(Rcpp, evalCpp)
+
+# paralellized code
+importFrom(parallelly, availableCores)
+
+exportPattern("^[[:alpha:]]+")
+

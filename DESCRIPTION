@@ -1,0 +1,21 @@
+Package: ThreadingExample
+Type: Package
+Title: Example package for using Rcpp::Threads
+Version: 1.0
+Date: 2024-12-16
+Authors@R: c(person("Sarah", "Westcott", role = c("aut", "cre"), 
+  email = "swestcot@umich.edu"))
+Maintainer: Schloss Lab <pschloss@umich.edu>
+Description: Rcpp::Threading example to demonstrate parallelization
+License: GPL (>= 2)
+Roxygen: list(markdown = TRUE)              
+Config/testthat/edition: 3
+RoxygenNote: 7.3.2
+Imports: 
+  parallelly,
+  RcppThread
+Depends: Rcpp (>= 1.0.13), R (>= 4.4.0)
+LinkingTo: Rcpp, RcppThread, testthat
+Encoding: UTF-8
+Suggests: 
+    testthat (>= 3.0.0), xml2
