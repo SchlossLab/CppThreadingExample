@@ -1,10 +1,8 @@
 # ThreadingExample
 
-<!-- badges: start -->
+The goal of ThreadingExample is to demonstrate the use of threaded C++ code in an R package.
 
-<!-- badges: end -->
-
-The goal of ThreadingExample is to ...
+![](https://github.com/SchlossLab/CppThreadingExample/blob/main/inst/extdata/Threads.jpg?raw=true)
 
 ## Installation
 
@@ -17,10 +15,10 @@ pak::pak("SchlossLab/CppThreadingExample")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+The basic example below will calculate the sum of 'data' using 4 processors.
 
 ``` r
 library(ThreadingExample)
 data <- c(1:100)
-calculate_sum(data)
+calculate_sum(data, 4)
 ```
