@@ -28,7 +28,7 @@ calculate_sum <- function(data, processors = parallelly::availableCores()) {
     if(is.null(data) || !(class(data) %in% c("numeric", "integer"))) {
         cli::cli_abort("Unexpected data type, ensure 'data' is type 'numeric'.")
     }
-    print(processors)
+
     # call rcpp exported function passing it data and processors
     result <- calculateSum(data, processors)
     return(result)
