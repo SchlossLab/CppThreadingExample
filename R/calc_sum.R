@@ -6,6 +6,9 @@
 #' @description Calculate the sum of integers
 #' @return Integer, containing sum of data
 #'
+#' @import cli
+#' @importFrom parallelly, availableCores
+#'
 #' @export
 #' @author Sarah Westcott, \email{swestcot@@umich.edu}
 #' @examples
@@ -31,5 +34,6 @@ calculate_sum <- function(data, processors = parallelly::availableCores()) {
 
     # call rcpp exported function passing it data and processors
     result <- calculateSum(data, processors)
+
     return(result)
 }

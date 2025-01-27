@@ -17,9 +17,12 @@ std::int64_t calculateSum(Rcpp::IntegerVector data,
 
     // create instance of Sum class
     Sum* calc = new Sum(processors);
+
     // call accumulate function
     result = calc->accumulate(data);
+
     // delete instance of Sum class
     delete calc;
+
     return result;
 }

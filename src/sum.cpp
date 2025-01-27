@@ -91,21 +91,28 @@ int Sum::createProcesses(const vector<int>& data) {
     for (int i = 0; i < processors-1; i++) {
 
         // create sumData* containing this thread's piece of work
-            sumData* threadSum = new sumData(slicing(data, startEnds[i+1].start, startEnds[i+1].end));
+        sumData* threadSum = new sumData(slicing(data, startEnds[i+1].start,
+                                                 startEnds[i+1].end));
 
         // save sumData* for later access
-            threadData.emplace_back(threadSum);
+        threadData.emplace_back(threadSum);
+
         // create thread and save for join
-        workerThreads.push_back(new RcppThread::Thread(driverAccumulate, threadSum));
+        workerThreads.push_back(new RcppThread::Thread(driverAccumulate,
+                                                       threadSum));
     }
 
 
     // create sumData* containing main thread's piece of work
-    sumData* firstSum = new sumData(slicing(data, startEnds[0].start, startEnds[0].end));
+    sumData* firstSum = new sumData(slicing(data, startEnds[0].start,
+                                            startEnds[0].end));
+
     // run worker function with main thread
     driverAccumulate(firstSum);
+
     // collect main thread's results
     int total = firstSum->partialSum;
+
     // delete main thread's sumData*
     delete firstSum;
 
@@ -116,9 +123,9 @@ int Sum::createProcesses(const vector<int>& data) {
 
         // collect worker thread's results
         total+=threadData[i]->partialSum;
+
         // delete worker thread's sumData* and delete thread
         delete threadData[i], workerThreads[i];
-        // delete thread
     }
 
     return total;
